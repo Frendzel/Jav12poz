@@ -9,4 +9,8 @@ public class Example {
     protected Double field2;
 
     public BigDecimal fields3;
+
+    public void hello(){
+        System.out.println("Hello world!");
+    }
 }

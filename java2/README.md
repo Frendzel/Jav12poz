@@ -4,7 +4,7 @@
 1. Maven
 why? how? alternatives?
 2. Junit
-why? how? alternatives?
+why? how? alternatives? TESTNG, MOCKITO
 3. TDD
 4. Reflection
 5. Generics
