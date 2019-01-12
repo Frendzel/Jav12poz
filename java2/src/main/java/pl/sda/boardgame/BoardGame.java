@@ -4,7 +4,12 @@ import lombok.Getter;
 import lombok.ToString;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.lang.Math.random;
 import static java.util.Comparator.comparing;
@@ -72,6 +77,45 @@ public class BoardGame {
                 .orElseThrow(Exception::new);
     }
 
+    public String glueString() {
+        return games
+                .stream()
+                .map(BoardGame::getName)
+                .collect(Collectors.joining());
+    }
+
+    public String glueUpperCaseString() {
+        return games
+                .stream()
+                .map(BoardGame::getName)
+                .map(String::toUpperCase)
+                .collect(Collectors.joining())
+                .toUpperCase(); //alternative
+    }
+
+    public Map<String, Double> formatToMapWithoutStream() {
+        Map<String, Double> map = new HashMap<>();
+        for (BoardGame game : games) {
+            map.put(game.getName(), game.getRating());
+        }
+        return map;
+    }
+
+    public Map<String, Double> getMap() {
+        return games
+                .stream()
+                .collect(
+                        Collectors.toMap(
+                                BoardGame::getName,
+                                BoardGame::getRating)
+                );
+    }
+
+    public Set<BoardGame> toSet() {
+        return new HashSet<>(games);
+    }
+
+
     //Tasks:
 
     //0. Every task should have separated method with junit test
@@ -81,6 +125,6 @@ public class BoardGame {
     //4. Now use streams my friend, with map and reduce
     //5. Please glue all the names in one string
     //6. And make it uppercase
-    //7. And collect data from point 1 to Map
+    //7. And collect data generated in point 1 to Map
     //8. To Set
 }
