@@ -53,6 +53,25 @@ public class BoardGame {
                 .orElseThrow(() -> new Exception("Stream is empty!"));
     }
 
+    public BoardGame getHighestRatingWithA() {
+        return games
+                .stream()
+                .filter(g -> g.getName().contains("a"))
+                .max(comparing(BoardGame::getRating))
+                .orElse(new BoardGame());
+    }
+
+    public Double getHighestRatingWithMapReduce() throws Exception {
+        return games
+                .stream()
+                .map(BoardGame::getRating)
+                .reduce((
+                        rating1, rating2) ->
+                        rating1.compareTo(rating2) > 0
+                                ? rating1 : rating2)
+                .orElseThrow(Exception::new);
+    }
+
     //Tasks:
 
     //0. Every task should have separated method with junit test

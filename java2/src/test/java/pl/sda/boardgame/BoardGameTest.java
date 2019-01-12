@@ -40,4 +40,14 @@ public class BoardGameTest {
         assertEquals(highestRating.getRating(), theHighestRank);
     }
 
+    //3. Find game with the highest rating which has letter a in the name
+    @Test
+    public void should_find_the_highest_rank_from_games_with_letter_a() {
+        //when
+        BoardGame highestRating = boardGame.getHighestRatingWithA();
+        //then
+        assertTrue(highestRating.getName().contains("a"));
+    }
+
+
 }
