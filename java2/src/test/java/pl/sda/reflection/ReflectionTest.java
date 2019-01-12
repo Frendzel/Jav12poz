@@ -60,9 +60,9 @@ public class ReflectionTest {
     @Test
     public void findImHereAnnotationTest() {
         //given
-        Reflection reflection = new Reflection();
+        Example example = new Example();
         //when
-        boolean imHereAnnotation = reflection.findImHereAnnotation(reflection);
+        boolean imHereAnnotation = Reflection.findImHereAnnotation(example);
         //then
         assertTrue(imHereAnnotation);
     }

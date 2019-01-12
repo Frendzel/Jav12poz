@@ -66,6 +66,7 @@ public class BoardGame {
                 .orElse(new BoardGame());
     }
 
+    //TODO test
     public Double getHighestRatingWithMapReduce() throws Exception {
         return games
                 .stream()
@@ -77,6 +78,7 @@ public class BoardGame {
                 .orElseThrow(Exception::new);
     }
 
+    //TODO test
     public String glueString() {
         return games
                 .stream()
@@ -84,6 +86,7 @@ public class BoardGame {
                 .collect(Collectors.joining());
     }
 
+    //TODO test
     public String glueUpperCaseString() {
         return games
                 .stream()
@@ -93,6 +96,7 @@ public class BoardGame {
                 .toUpperCase(); //alternative
     }
 
+    //TODO test
     public Map<String, Double> formatToMapWithoutStream() {
         Map<String, Double> map = new HashMap<>();
         for (BoardGame game : games) {
@@ -101,6 +105,7 @@ public class BoardGame {
         return map;
     }
 
+    //TODO test
     public Map<String, Double> getMap() {
         return games
                 .stream()
@@ -111,6 +116,7 @@ public class BoardGame {
                 );
     }
 
+    //TODO test
     public Set<BoardGame> toSet() {
         return new HashSet<>(games);
     }
