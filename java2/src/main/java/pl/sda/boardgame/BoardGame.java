@@ -1,13 +1,57 @@
 package pl.sda.boardgame;
 
+import lombok.Getter;
+import lombok.ToString;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.random;
+import static java.util.Comparator.comparing;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
+@ToString
+@Getter
 public class BoardGame {
 
     private String name;
     private Double rating;
-    private static final List<BoardGame> GAMES = new ArrayList();
+    private final List<BoardGame> games = new ArrayList();
+
+    public List<BoardGame> getGames() {
+        return games;
+    }
+
+    public BoardGame() {
+    }
+
+    public BoardGame(String name, Double rating) {
+        this.name = name;
+        this.rating = rating;
+    }
+
+    public void init() {
+        for (int i = 0; i < 100; i++) {
+            games.add(new BoardGame(
+                    randomAlphabetic(10),
+                    random()));
+        }
+    }
+
+    public Double getTheHighestRank() throws Exception {
+        return games
+                .stream()
+                .mapToDouble(BoardGame::getRating)
+                .max()
+                .orElseThrow(() -> new Exception("Stream is empty!"));
+    }
+
+    public BoardGame getHighestRating() throws Exception {
+        return games
+                .stream()
+                .max(comparing(BoardGame::getRating))
+                .orElseThrow(() -> new Exception("Stream is empty!"));
+    }
 
     //Tasks:
 
