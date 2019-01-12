@@ -1,11 +1,16 @@
 package pl.sda.reflection;
 
+import pl.sda.annotation.ImHere;
+import pl.sda.example.Example;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class Reflection {
+
+    Example example = new Example();
 
     public int getFields(Object object) {
         Class<?> aClass = object.getClass();
@@ -41,5 +46,12 @@ public class Reflection {
         }
         return annotationsCounter;
     }
+
+    //znajdzmy adnotacje na klasie korzystajac z refleksji
+    public boolean findImHereAnnotation(Object object) {
+        ImHere[] annotationsByType = object.getClass().getDeclaredAnnotationsByType(ImHere.class);
+        return annotationsByType.toString() != null;
+    }
+
 
 }

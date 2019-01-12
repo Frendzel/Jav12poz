@@ -1,10 +1,12 @@
 package pl.sda.reflection;
 
-import org.junit.Assert;
 import org.junit.Test;
 import pl.sda.example.Example;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+
+import static org.junit.Assert.*;
 
 public class ReflectionTest {
 
@@ -19,7 +21,7 @@ public class ReflectionTest {
         //when
         int result = reflection.getFields(new Example());
         //then
-        Assert.assertEquals(EXAMPLE_FIELD_SIZE, result);
+        assertEquals(EXAMPLE_FIELD_SIZE, result);
     }
 
     @Test
@@ -29,7 +31,7 @@ public class ReflectionTest {
         //when
         int result = reflection.getMethods(new Example());
         //then
-        Assert.assertEquals(EXAMPLE_METHOD_SIZE, result);
+        assertEquals(EXAMPLE_METHOD_SIZE, result);
     }
 
     @Test
@@ -39,7 +41,29 @@ public class ReflectionTest {
         //when
         int result = reflection.getAnnotations(new Example());
         //then
-        Assert.assertEquals(EXAMPLE_ANNOTATIONS_SIZE, result);
+        assertEquals(EXAMPLE_ANNOTATIONS_SIZE, result);
 
+    }
+
+    @Test
+    public void classForNameTest() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+        Class<?> aClass = Class.forName("pl.sda.example.Example");
+        Object o = aClass.newInstance();
+        Method[] declaredMethods = aClass.getDeclaredMethods();
+        for (Method m : declaredMethods) {
+            m.setAccessible(true);
+        }
+        Method hello = aClass.getDeclaredMethod("hello");
+        hello.invoke(o);
+    }
+
+    @Test
+    public void findImHereAnnotationTest() {
+        //given
+        Reflection reflection = new Reflection();
+        //when
+        boolean imHereAnnotation = reflection.findImHereAnnotation(reflection);
+        //then
+        assertTrue(imHereAnnotation);
     }
 }

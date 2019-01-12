@@ -1,7 +1,12 @@
 package pl.sda.example;
 
+import lombok.Data;
+import pl.sda.annotation.ImHere;
+
 import java.math.BigDecimal;
 
+@Data
+@ImHere
 public class Example {
 
     private String field1;
@@ -13,4 +18,5 @@ public class Example {
     public void hello(){
         System.out.println("Hello world!");
     }
+
 }
