@@ -116,6 +116,14 @@ public class BoardGame {
                 );
     }
 
+    public String getNameUppercase() {
+        return games
+                .stream()
+                .map(BoardGame::getName)
+                .map(String::toUpperCase)
+                .collect(Collectors.joining());
+    }
+
     //TODO test
     public Set<BoardGame> toSet() {
         return new HashSet<>(games);

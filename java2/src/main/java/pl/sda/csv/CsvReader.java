@@ -28,6 +28,7 @@ public class CsvReader {
                 CSVParser csvParser = new CSVParser(reader, DEFAULT
                         .withHeader("id", "first_name", "last_name")
                         .withIgnoreHeaderCase()
+                        .withSkipHeaderRecord()
                         .withTrim())
         ) {
             for (CSVRecord csvRecord : csvParser) {
