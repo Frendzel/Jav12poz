@@ -15,15 +15,16 @@ import java.util.List;
 import static java.lang.Thread.currentThread;
 import static org.apache.commons.csv.CSVFormat.DEFAULT;
 
-public class CsvReader {
+public class CsvReader implements Readable {
 
     private static final String CSV_FILE_NAME = "employee.csv";
 
     public List<Employee> readAndPrintContentFromEmployeeCsv() throws IOException {
-        return readAndPrintContentFromCsv(CSV_FILE_NAME);
+        return read(CSV_FILE_NAME);
     }
 
-    public List<Employee> readAndPrintContentFromCsv(String csvFileName) throws IOException {
+    @Override
+    public List<Employee> read(String csvFileName) throws IOException {
         ClassLoader classloader = currentThread().getContextClassLoader();
         List<Employee> employees = new ArrayList<>();
         try (
