@@ -1,7 +1,8 @@
-package pl.sda.csv;
+package pl.sda.reader;
 
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import pl.sda.model.Employee;
 
 import java.io.BufferedReader;
 import java.io.IOException;

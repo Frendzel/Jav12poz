@@ -1,6 +1,8 @@
-package pl.sda.csv;
+package pl.sda.writer.csv;
 
 import org.junit.Test;
+import pl.sda.model.Employee;
+import pl.sda.reader.CsvReader;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,7 +1,8 @@
-package pl.sda.csv;
+package pl.sda.writer.csv;
 
 import org.junit.Before;
 import org.junit.Test;
+import pl.sda.model.Employee;
 
 import java.io.IOException;
 import java.util.ArrayList;
